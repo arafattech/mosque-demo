@@ -1,6 +1,10 @@
+"use client";
 import Link from 'next/link';
 
+import { usePathname } from "next/navigation";
+
 export default function Header() {
+  const pathname = usePathname();
   return (
     <>
       {/* Topbar start */}
@@ -46,7 +50,10 @@ export default function Header() {
                 <Link href="/activity" className="nav-item nav-link">Activities</Link>
                 <Link href="/event" className="nav-item nav-link">Events</Link>
                 <Link href="/sermon" className="nav-item nav-link">Sermons</Link>
-                <div className="nav-item dropdown">
+                <Link href="/mosques" className={`nav-item nav-link ${pathname === "/mosques" ? "active" : ""}`}>
+                Mosques
+              </Link>
+              <div className="nav-item dropdown">
                   <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                   <div className="dropdown-menu m-0 rounded-0">
                     <Link href="/blog" className="dropdown-item">Latest Blog</Link>
