@@ -7,7 +7,7 @@ export default function Contact() {
           <h1 className="display-3">Contact For Any Queries</h1>
           <p className="mb-0">
             The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few
-            minutes. Just copy and paste the files, add a little code and you're done.{" "}
+            minutes. Just copy and paste the files, add a little code and you &#39;re done.{" "}
             <a href="https://htmlcodex.com/contact-form">Download Now</a>.
           </p>
         </div>

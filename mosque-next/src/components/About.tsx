@@ -55,7 +55,7 @@ export default function About() {
               <div className="d-flex align-items-center">
                 <i className="fa fa-quote-left text-primary fa-2x me-3"></i>
                 <p className="mb-0 fst-italic text-dark">
-                  "The mosques of Allah are only to be maintained by those who believe in Allah and the Last Day and establish prayer and give zakah and do not fear except Allah..."
+                  &quot;The mosques of Allah are only to be maintained by those who believe in Allah and the Last Day and establish prayer and give zakah and do not fear except Allah.&quot;
                   <br />
                   <span className="text-primary fw-bold mt-2 d-block">- Surah At-Tawbah 9:18</span>
                 </p>
