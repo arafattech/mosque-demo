@@ -6,12 +6,12 @@ export default function About() {
           <div className="col-xl-6">
             <div className="row g-4 h-100">
               <div className="col-6">
-                <img src="/img/about-1.jpg" className="img-fluid h-100 rounded shadow-sm wow zoomIn" style={{objectFit: 'cover'}} data-wow-delay="0.1s" alt="Mosque Interior" />
+                <img src="/img/about/about-1.jpg" className="img-fluid h-100 rounded shadow-sm wow zoomIn" style={{objectFit: 'cover'}} data-wow-delay="0.1s" alt="Mosque Interior" />
               </div>
               <div className="col-6">
                 <div className="d-flex flex-column h-100 gap-4">
-                    <img src="/img/about-2.jpg" className="img-fluid h-50 rounded shadow-sm wow zoomIn" style={{objectFit: 'cover'}} data-wow-delay="0.3s" alt="Prayer" />
-                    <img src="/img/about-3.jpg" className="img-fluid h-50 rounded shadow-sm wow zoomIn" style={{objectFit: 'cover'}} data-wow-delay="0.5s" alt="Quran" />
+                    <img src="/img/about/about-2.jpg" className="img-fluid h-50 rounded shadow-sm wow zoomIn" style={{objectFit: 'cover'}} data-wow-delay="0.3s" alt="Prayer" />
+                    <img src="/img/about/about-3.jpg" className="img-fluid h-50 rounded shadow-sm wow zoomIn" style={{objectFit: 'cover'}} data-wow-delay="0.5s" alt="Quran" />
                 </div>
               </div>
             </div>
