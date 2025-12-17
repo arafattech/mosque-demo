@@ -1,1 +1,6 @@
 /* Globals CSS cleared to avoid conflicts with Bootstrap and Template Styles */
+
+.height-logo img {
+    max-height: 70px;
+    width: auto;
+}

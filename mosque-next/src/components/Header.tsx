@@ -36,8 +36,8 @@ export default function Header() {
         </div>
         <div className="container">
           <nav className="navbar navbar-light navbar-expand-lg py-3">
-            <Link href="/" className="navbar-brand">
-              <h1 className="mb-0">THE<span className="text-primary">Mosque</span> </h1>
+            <Link href="/" className="navbar-brand with-logo d-flex align-items-center height-logo" >
+             <img src="/img/logo/logo.png" alt="Logo" />
             </Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
               <span className="fa fa-bars text-primary"></span>
