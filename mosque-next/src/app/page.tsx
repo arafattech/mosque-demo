@@ -8,6 +8,7 @@ import Sermon from "@/components/Sermon";
 import Team from "@/components/Team";
 import Testimonial from "@/components/Testimonial";
 
+
 export default function Home() {
   return (
     <>
