@@ -178,67 +178,77 @@ export default function MosqueListing({ enableFilters = true, defaultLimit }: Mo
 
         {/* Modal */}
         {selectedMosque && (
-          <div className="modal fade show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }} tabIndex={-1}>
-            <div className="modal-dialog modal-lg modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header border-0">
-                  <h5 className="modal-title">{selectedMosque.name}</h5>
+          <div className="modal fade show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(5px)' }} tabIndex={-1}>
+            <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+              <div className="modal-content border-0 shadow-lg overflow-hidden">
+                <div className="modal-header border-0 bg-light">
+                  <h5 className="modal-title text-primary fw-bold">{selectedMosque.name}</h5>
                   <button type="button" className="btn-close" onClick={() => setSelectedMosque(null)}></button>
                 </div>
                 <div className="modal-body p-0">
-                    <img src={selectedMosque.image} className="w-100" style={{ height: '300px', objectFit: 'cover' }} alt={selectedMosque.name} />
+                    <div className="position-relative">
+                        <img src={selectedMosque.image} className="w-100" style={{ height: '300px', objectFit: 'cover' }} alt={selectedMosque.name} />
+                        <div className="position-absolute bottom-0 start-0 w-100 p-3" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)' }}>
+                            <p className="text-white mb-0"><i className="fa fa-map-marker-alt text-primary me-2"></i>{selectedMosque.address}</p>
+                        </div>
+                    </div>
                     <div className="p-4">
                         <div className="row g-4">
-                            <div className="col-md-6">
-                                <h6 className="text-primary text-uppercase mb-3">General Info</h6>
-                                <p><i className="fa fa-map-marker-alt text-primary me-2"></i>{selectedMosque.address}</p>
-                                <p className="text-muted small">
-                                    {selectedMosque.pourashava}, {selectedMosque.thana}, {selectedMosque.district}, {selectedMosque.division}
-                                </p>
-                                {selectedMosque.imam && <p><i className="fa fa-user text-primary me-2"></i>Imam: {selectedMosque.imam}</p>}
-                                {selectedMosque.contact && <p><i className="fa fa-phone-alt text-primary me-2"></i>{selectedMosque.contact}</p>}
-                                <a href={selectedMosque.mapLink} target="_blank" rel="noreferrer" className="btn btn-sm btn-primary mt-2">
-                                    <i className="fa fa-map me-2"></i>Open in Google Maps
-                                </a>
-                            </div>
-                            <div className="col-md-6">
-                                <h6 className="text-primary text-uppercase mb-3">Prayer Times</h6>
-                                <ul className="list-unstyled">
-                                    <li className="d-flex justify-content-between border-bottom py-2"><span>Fajr:</span> <span className="fw-bold">{selectedMosque.prayerTimes.fajr}</span></li>
-                                    <li className="d-flex justify-content-between border-bottom py-2"><span>Dhuhr:</span> <span className="fw-bold">{selectedMosque.prayerTimes.dhuhr}</span></li>
-                                    <li className="d-flex justify-content-between border-bottom py-2"><span>Asr:</span> <span className="fw-bold">{selectedMosque.prayerTimes.asr}</span></li>
-                                    <li className="d-flex justify-content-between border-bottom py-2"><span>Maghrib:</span> <span className="fw-bold">{selectedMosque.prayerTimes.maghrib}</span></li>
-                                    <li className="d-flex justify-content-between border-bottom py-2"><span>Isha:</span> <span className="fw-bold">{selectedMosque.prayerTimes.isha}</span></li>
-                                    <li className="d-flex justify-content-between py-2 text-primary"><span>Jummah:</span> <span className="fw-bold">{selectedMosque.prayerTimes.jummah}</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <hr className="my-4" />
-                        <h6 className="text-primary text-uppercase mb-3">Facilities</h6>
-                        <div className="row g-3">
-                            <div className="col-6 col-md-4">
-                                <div className={`d-flex align-items-center ${selectedMosque.facilities.wudu ? 'text-dark' : 'text-muted'}`}>
-                                    <i className={`fa fa-water me-2 ${selectedMosque.facilities.wudu ? 'text-primary' : ''}`}></i> Wudu Area
+                            <div className="col-lg-6">
+                                <div className="bg-light p-4 rounded h-100">
+                                    <h6 className="text-primary text-uppercase mb-3 fw-bold border-bottom pb-2">General Info</h6>
+                                    <div className="d-flex flex-column gap-3">
+                                        <div className="d-flex align-items-start">
+                                            <i className="fa fa-map text-primary mt-1 me-3"></i>
+                                            <div>
+                                                <small className="text-muted d-block">Location</small>
+                                                <span className="fw-medium">{selectedMosque.pourashava}, {selectedMosque.thana}, {selectedMosque.district}</span>
+                                            </div>
+                                        </div>
+                                        {selectedMosque.imam && (
+                                            <div className="d-flex align-items-start">
+                                                <i className="fa fa-user text-primary mt-1 me-3"></i>
+                                                <div>
+                                                    <small className="text-muted d-block">Imam</small>
+                                                    <span className="fw-medium">{selectedMosque.imam}</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {selectedMosque.contact && (
+                                            <div className="d-flex align-items-start">
+                                                <i className="fa fa-phone-alt text-primary mt-1 me-3"></i>
+                                                <div>
+                                                    <small className="text-muted d-block">Contact</small>
+                                                    <span className="fw-medium">{selectedMosque.contact}</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <a href={selectedMosque.mapLink} target="_blank" rel="noreferrer" className="btn btn-primary w-100 mt-4">
+                                        <i className="fa fa-location-arrow me-2"></i>Get Directions
+                                    </a>
                                 </div>
                             </div>
-                            <div className="col-6 col-md-4">
-                                <div className={`d-flex align-items-center ${selectedMosque.facilities.womenSpace ? 'text-dark' : 'text-muted'}`}>
-                                    <i className={`fa fa-female me-2 ${selectedMosque.facilities.womenSpace ? 'text-primary' : ''}`}></i> Women Space
+                            <div className="col-lg-6">
+                                <h6 className="text-primary text-uppercase mb-3 fw-bold border-bottom pb-2">Prayer Times</h6>
+                                <div className="row g-2">
+                                    {Object.entries(selectedMosque.prayerTimes).map(([name, time]) => (
+                                        <div key={name} className="col-6">
+                                            <div className={`p-2 rounded border d-flex justify-content-between align-items-center ${name === 'jummah' ? 'bg-primary text-white border-primary' : 'bg-white'}`}>
+                                                <span className="text-capitalize small fw-bold">{name}</span>
+                                                <span className="small">{time}</span>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            </div>
-                            <div className="col-6 col-md-4">
-                                <div className={`d-flex align-items-center ${selectedMosque.facilities.ac ? 'text-dark' : 'text-muted'}`}>
-                                    <i className={`fa fa-snowflake me-2 ${selectedMosque.facilities.ac ? 'text-primary' : ''}`}></i> AC Hall
-                                </div>
-                            </div>
-                            <div className="col-6 col-md-4">
-                                <div className={`d-flex align-items-center ${selectedMosque.facilities.parking ? 'text-dark' : 'text-muted'}`}>
-                                    <i className={`fa fa-parking me-2 ${selectedMosque.facilities.parking ? 'text-primary' : ''}`}></i> Parking
-                                </div>
-                            </div>
-                            <div className="col-6 col-md-4">
-                                <div className={`d-flex align-items-center ${selectedMosque.facilities.wheelchair ? 'text-dark' : 'text-muted'}`}>
-                                    <i className={`fa fa-wheelchair me-2 ${selectedMosque.facilities.wheelchair ? 'text-primary' : ''}`}></i> Wheelchair Access
+                                
+                                <h6 className="text-primary text-uppercase mt-4 mb-3 fw-bold border-bottom pb-2">Facilities</h6>
+                                <div className="d-flex flex-wrap gap-2">
+                                    <span className={`badge ${selectedMosque.facilities.wudu ? 'bg-success' : 'bg-secondary'} p-2`}><i className="fa fa-water me-1"></i> Wudu</span>
+                                    <span className={`badge ${selectedMosque.facilities.womenSpace ? 'bg-success' : 'bg-secondary'} p-2`}><i className="fa fa-female me-1"></i> Women Space</span>
+                                    <span className={`badge ${selectedMosque.facilities.ac ? 'bg-success' : 'bg-secondary'} p-2`}><i className="fa fa-snowflake me-1"></i> AC</span>
+                                    <span className={`badge ${selectedMosque.facilities.parking ? 'bg-success' : 'bg-secondary'} p-2`}><i className="fa fa-parking me-1"></i> Parking</span>
+                                    <span className={`badge ${selectedMosque.facilities.wheelchair ? 'bg-success' : 'bg-secondary'} p-2`}><i className="fa fa-wheelchair me-1"></i> Wheelchair</span>
                                 </div>
                             </div>
                         </div>

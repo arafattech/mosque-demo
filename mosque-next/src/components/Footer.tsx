@@ -27,7 +27,7 @@ export default function Footer() {
                 <h4 className="text-light mb-4">THE<span className="text-primary">Mosque</span></h4>
                 <p className="mb-4 text-secondary">Nostrud exertation ullamco labor nisi aliquip ex ea commodo
                   consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
-                <a href="" className="btn btn-primary py-2 px-4">Donate Now</a>
+                {/* <a href="" className="btn btn-primary py-2 px-4">Donate Now</a> */}
               </div>
             </div>
             <div className="col-md-6 col-lg-6 col-xl-3">

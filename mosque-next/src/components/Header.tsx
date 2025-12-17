@@ -29,7 +29,6 @@ export default function Header() {
                   <a className="text-dark px-2" href=""><i className="fab fa-twitter"></i></a>
                   <a className="text-dark px-2" href=""><i className="fab fa-linkedin-in"></i></a>
                   <a className="text-dark px-2" href=""><i className="fab fa-instagram"></i></a>
-                  <a className="text-body ps-4" href=""><i className="fa fa-lock text-dark me-1"></i> Signup/login</a>
                 </div>
               </div>
             </div>
@@ -45,26 +44,26 @@ export default function Header() {
             </button>
             <div className="collapse navbar-collapse bg-white" id="navbarCollapse">
               <div className="navbar-nav ms-lg-auto mx-xl-auto">
-                <Link href="/" className="nav-item nav-link active">Home</Link>
-                <Link href="/about" className="nav-item nav-link">About</Link>
-                <Link href="/activity" className="nav-item nav-link">Activities</Link>
-                <Link href="/event" className="nav-item nav-link">Events</Link>
-                <Link href="/sermon" className="nav-item nav-link">Sermons</Link>
-                <Link href="/mosques" className={`nav-item nav-link ${pathname === "/mosques" ? "active" : ""}`}>
+                <Link href="/" className="nav-item nav-link active" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Home</Link>
+                <Link href="/about" className="nav-item nav-link" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>About</Link>
+                <Link href="/activity" className="nav-item nav-link" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Activities</Link>
+                <Link href="/event" className="nav-item nav-link" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Events</Link>
+                <Link href="/sermon" className="nav-item nav-link" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Sermons</Link>
+                <Link href="/mosques" className={`nav-item nav-link ${pathname === "/mosques" ? "active" : ""}`} onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>
                 Mosques
               </Link>
               <div className="nav-item dropdown">
                   <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                   <div className="dropdown-menu m-0 rounded-0">
-                    <Link href="/blog" className="dropdown-item">Latest Blog</Link>
-                    <Link href="/team" className="dropdown-item">Our Team</Link>
-                    <Link href="/testimonial" className="dropdown-item">Testimonial</Link>
-                    <Link href="/404" className="dropdown-item">404 Page</Link>
+                    <Link href="/blog" className="dropdown-item" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Latest Blog</Link>
+                    <Link href="/team" className="dropdown-item" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Our Team</Link>
+                    <Link href="/testimonial" className="dropdown-item" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Testimonial</Link>
+                    <Link href="/404" className="dropdown-item" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>404 Page</Link>
                   </div>
                 </div>
-                <Link href="/contact" className="nav-item nav-link">Contact</Link>
+                <Link href="/contact" className="nav-item nav-link" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Contact</Link>
               </div>
-              <a href="" className="btn btn-primary py-2 px-4 d-none d-xl-inline-block">Donate</a>
+              {/* <a href="" className="btn btn-primary py-2 px-4 d-none d-xl-inline-block">Donate</a> */}
             </div>
           </nav>
         </div>
