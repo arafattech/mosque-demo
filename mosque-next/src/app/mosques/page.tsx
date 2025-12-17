@@ -1,6 +1,7 @@
 import MosqueListing from "@/components/MosqueListing";
 import PageHeader from "@/components/PageHeader";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Find Mosques - THEMosque",
@@ -17,7 +18,9 @@ export default function MosquesPage() {
           { label: "Mosques", active: true },
         ]}
       />
-      <MosqueListing />
+      <Suspense fallback={<div>Loading...</div>}>
+        <MosqueListing />
+      </Suspense>
     </>
   );
 }
