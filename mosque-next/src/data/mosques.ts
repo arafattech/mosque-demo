@@ -128,4 +128,19 @@ export const mosquesData: Mosque[] = [
     prayerTimes: { fajr: "5:00 AM", dhuhr: "1:15 PM", asr: "4:15 PM", maghrib: "6:30 PM", isha: "8:00 PM", jummah: "1:30 PM" },
     description: "A historical Mughal-era mosque in Chittagong."
   },
+  {
+    id: 7,
+    name: "Anderkilla Shahi Jame Masjid",
+    division: "Chittagong",
+    district: "Chittagong",
+    thana: "Kotwali",
+    pourashava: "Chittagong City Corp",
+    address: "Anderkilla, Chittagong",
+    mapLink: "https://maps.google.com",
+    image: "/img/blog-1.jpg",
+    prayers: { daily: true, jummah: true, eid: true },
+    facilities: { wudu: true, womenSpace: false, ac: false, parking: false, wheelchair: false },
+    prayerTimes: { fajr: "5:00 AM", dhuhr: "1:15 PM", asr: "4:15 PM", maghrib: "6:30 PM", isha: "8:00 PM", jummah: "1:30 PM" },
+    description: "A historical Mughal-era mosque in Chittagong."
+  },
 ];

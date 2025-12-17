@@ -5,7 +5,12 @@ import { useEffect, useMemo, useState } from "react";
 
 import { Mosque, mosquesData } from "@/data/mosques";
 
-export default function MosqueListing() {
+interface MosqueListingProps {
+  enableFilters?: boolean;
+  defaultLimit?: number;
+}
+
+export default function MosqueListing({ enableFilters = true, defaultLimit }: MosqueListingProps) {
   const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -21,6 +26,9 @@ export default function MosqueListing() {
 
     const thana = searchParams.get("thana");
     if (thana) setSelectedThana(thana);
+
+    const pourashava = searchParams.get("pourashava");
+    if (pourashava) setSelectedPourashava(pourashava);
   }, [searchParams]);
   const [selectedDivision, setSelectedDivision] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
@@ -56,6 +64,13 @@ export default function MosqueListing() {
     return matchesSearch && matchesDivision && matchesDistrict && matchesThana && matchesPourashava;
   });
 
+  const displayedMosques = useMemo(() => {
+    if (defaultLimit && !searchTerm && !selectedDivision && !selectedDistrict && !selectedThana && !selectedPourashava) {
+      return filteredMosques.slice(0, defaultLimit);
+    }
+    return filteredMosques;
+  }, [filteredMosques, defaultLimit, searchTerm, selectedDivision, selectedDistrict, selectedThana, selectedPourashava]);
+
   const handleDivisionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedDivision(e.target.value);
     setSelectedDistrict("");
@@ -75,57 +90,61 @@ export default function MosqueListing() {
   };
 
   return (
-    <div className="container-fluid py-5">
+    <div className="container-fluid py-5" id="mosque-listing">
       <div className="container py-5">
-        <div className="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style={{ maxWidth: "700px" }}>
-          <p className="fs-5 text-uppercase text-primary">Find a Mosque</p>
-          <h1 className="display-3">Mosques in Bangladesh</h1>
-          <p className="mb-0">Find prayer times, locations, and facilities of mosques near you.</p>
-        </div>
+        {enableFilters && (
+          <>
+            <div className="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style={{ maxWidth: "700px" }}>
+              <p className="fs-5 text-uppercase text-primary">Find a Mosque</p>
+              <h1 className="display-3">Mosques in Bangladesh</h1>
+              <p className="mb-0">Find prayer times, locations, and facilities of mosques near you.</p>
+            </div>
 
-        {/* Search and Filter */}
-        <div className="row g-3 mb-5 wow fadeIn" data-wow-delay="0.3s">
-          <div className="col-12">
-            <input
-              type="text"
-              className="form-control p-3"
-              placeholder="Search mosque by name..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-          
-          {/* Cascading Dropdowns */}
-          <div className="col-md-3">
-            <select className="form-select p-3" value={selectedDivision} onChange={handleDivisionChange}>
-              <option value="">Select Division</option>
-              {divisions.map(div => <option key={div} value={div}>{div}</option>)}
-            </select>
-          </div>
-          <div className="col-md-3">
-            <select className="form-select p-3" value={selectedDistrict} onChange={handleDistrictChange} disabled={!selectedDivision}>
-              <option value="">Select District</option>
-              {districts.map(dist => <option key={dist} value={dist}>{dist}</option>)}
-            </select>
-          </div>
-          <div className="col-md-3">
-            <select className="form-select p-3" value={selectedThana} onChange={handleThanaChange} disabled={!selectedDistrict}>
-              <option value="">Select Thana</option>
-              {thanas.map(thana => <option key={thana} value={thana}>{thana}</option>)}
-            </select>
-          </div>
-          <div className="col-md-3">
-            <select className="form-select p-3" value={selectedPourashava} onChange={(pourashava) => setSelectedPourashava(pourashava.target.value)} disabled={!selectedThana}>
-              <option value="">Select Pourashava</option>
-              {pourashavas.map(pour => <option key={pour} value={pour}>{pour}</option>)}
-            </select>
-          </div>
-        </div>
+            {/* Search and Filter */}
+            <div className="row g-3 mb-5 wow fadeIn" data-wow-delay="0.3s">
+              <div className="col-12">
+                <input
+                  type="text"
+                  className="form-control p-3"
+                  placeholder="Search mosque by name..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
+              
+              {/* Cascading Dropdowns */}
+              <div className="col-md-3">
+                <select className="form-select p-3" value={selectedDivision} onChange={handleDivisionChange}>
+                  <option value="">Select Division</option>
+                  {divisions.map(div => <option key={div} value={div}>{div}</option>)}
+                </select>
+              </div>
+              <div className="col-md-3">
+                <select className="form-select p-3" value={selectedDistrict} onChange={handleDistrictChange} disabled={!selectedDivision}>
+                  <option value="">Select District</option>
+                  {districts.map(dist => <option key={dist} value={dist}>{dist}</option>)}
+                </select>
+              </div>
+              <div className="col-md-3">
+                <select className="form-select p-3" value={selectedThana} onChange={handleThanaChange} disabled={!selectedDistrict}>
+                  <option value="">Select Thana</option>
+                  {thanas.map(thana => <option key={thana} value={thana}>{thana}</option>)}
+                </select>
+              </div>
+              <div className="col-md-3">
+                <select className="form-select p-3" value={selectedPourashava} onChange={(e) => setSelectedPourashava(e.target.value)} disabled={!selectedThana}>
+                  <option value="">Select Pourashava</option>
+                  {pourashavas.map(pour => <option key={pour} value={pour}>{pour}</option>)}
+                </select>
+              </div>
+            </div>
+          </>
+        )}
 
         {/* Mosque Grid */}
         <div className="row g-4">
-          {filteredMosques.length > 0 ? (
-            filteredMosques.map((mosque) => (
+          {displayedMosques.length > 0 ? (
+            displayedMosques.map((mosque) => (
               <div key={mosque.id} className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div className="card h-100 border-0 shadow-sm overflow-hidden" onClick={() => setSelectedMosque(mosque)} style={{ cursor: 'pointer' }}>
                   <div className="position-relative">

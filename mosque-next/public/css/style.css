@@ -200,7 +200,7 @@ h4, h5, h6, .h4, .h5, .h6 {
 .hero-header {
     margin-bottom: 6rem;
     padding-top: 10rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     background: url("../img/hero.jpg"), center center no-repeat;
     background-size: cover;
 }
