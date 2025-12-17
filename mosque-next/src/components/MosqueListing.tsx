@@ -230,7 +230,7 @@ export default function MosqueListing() {
             </select>
           </div>
           <div className="col-md-3">
-            <select className="form-select p-3" value={selectedPourashava} onChange={(e) => setSelectedPourashava(e.target.value)} disabled={!selectedThana}>
+            <select className="form-select p-3" value={selectedPourashava} onChange={(pourashava) => setSelectedPourashava(pourashava.target.value)} disabled={!selectedThana}>
               <option value="">Select Pourashava</option>
               {pourashavas.map(pour => <option key={pour} value={pour}>{pour}</option>)}
             </select>
