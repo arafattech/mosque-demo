@@ -53,12 +53,11 @@ export default function Header() {
                 Mosques
               </Link>
               <div className="nav-item dropdown">
-                  <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                  <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Others</a>
                   <div className="dropdown-menu m-0 rounded-0">
                     <Link href="/blog" className="dropdown-item" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Latest Blog</Link>
                     <Link href="/team" className="dropdown-item" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Our Team</Link>
                     <Link href="/testimonial" className="dropdown-item" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Testimonial</Link>
-                    <Link href="/404" className="dropdown-item" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>404 Page</Link>
                   </div>
                 </div>
                 <Link href="/contact" className="nav-item nav-link" onClick={() => document.getElementById("navbarCollapse")?.classList.remove("show")}>Contact</Link>
